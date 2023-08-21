@@ -49,18 +49,18 @@ app.get('/info', (req, res) => {
     const newRandId = Math.floor(Math.random() * 10000)
     //console.log(newRandId)
     if (!body.name || !body.number) {
-      return response.status(400).json({ 
-        error: 'content missing' 
+      return response.status(400).json({
+        error: 'content missing'
       })
     }
 
-  
+
     const person = new Person({
       name: body.name,
       number: body.number,
       //id: newRandId,
     })
-  
+
     person.save().then(savedPerson => {
       response.json(savedPerson)
     })
