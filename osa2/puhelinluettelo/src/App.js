@@ -42,6 +42,7 @@ const App = () => {
     setNewNumber('')
   })
   .catch(error => {
+    console.log(error)
     setErrMsg(`${person[0].name} was already deleted from server`)
     setTimeout(() => {
       setErrMsg('')
@@ -50,13 +51,16 @@ const App = () => {
   })
   }
 
+
+
   const addPerson = (event) => {
     event.preventDefault()
     const names = persons.map(person => person.name)
     if (names.includes(newName)) {
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
         const person = persons.filter(person => person.name === newName)
-        const newObject = {...person[0], number: newNumber} 
+        const newObject = {name: newName, number: newNumber}
+        console.log(newObject, person[0].id) 
         updatePerson(person[0].id, newObject)
       }
     } else {
