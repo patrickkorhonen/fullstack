@@ -42,12 +42,11 @@ const App = () => {
     setNewNumber('')
   })
   .catch(error => {
-    console.log(error)
-    setErrMsg(`${person[0].name} was already deleted from server`)
+    console.log(error.response.data.error)
+    setErrMsg(error.response.data.error)
     setTimeout(() => {
       setErrMsg('')
     }, 4000)
-    setPersons(persons.filter(person => person.id !== id))
   })
   }
 
@@ -73,6 +72,13 @@ const App = () => {
     .then(response => {
       setPersons(persons.concat(response.data))
     })
+    .catch(error => {
+      console.log(error.response.data.error)
+      setErrMsg(error.response.data.error)
+      setTimeout(() => {
+        setErrMsg('')
+      }, 4000)
+    })
     setMessage(`Added ${newName}`)
     setTimeout(() => {
       setMessage('')
@@ -88,6 +94,12 @@ const App = () => {
     .deletePerson(id)
     .then(response => {
       console.log(response)
+    })
+    .catch(error => {
+      setErrMsg(error.response.data.error)
+      setTimeout(() => {
+        setErrMsg('')
+      }, 4000)
     })
     setPersons(persons.filter(person => person.id !== id))
     setMessage(`Deleted ${person[0].name}`)
