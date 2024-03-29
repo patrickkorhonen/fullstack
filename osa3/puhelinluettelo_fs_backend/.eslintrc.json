@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "react",
+        "@stylistic/js"
+    ],
+    "rules": {
+        "@stylistic/js/indent": [
+            "error",
+            "tab"
+        ],
+        "@stylistic/js/linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "@stylistic/js/quotes": [
+            "error",
+            "double"
+        ],
+        "@stylistic/js/semi": [
+            "error",
+            "never"
+        ],
+    }
+}
